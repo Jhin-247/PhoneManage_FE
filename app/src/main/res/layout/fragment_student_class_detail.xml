@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="class_detail"
+            type="com.b18dccn562.phonemanager.network.dto.ClassDTO" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlt_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_main_theme"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/margin_normal"
+                app:srcCompat="@drawable/ic_back_white" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/BigTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_toStartOf="@id/btn_view_report"
+                android:layout_toEndOf="@id/btn_back"
+                android:text="@{class_detail.classname}"
+                android:textAlignment="center"
+                tools:text="123" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_view_report"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:visibility="invisible"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="@dimen/margin_normal"
+                app:srcCompat="@drawable/ic_view_report" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rlt_class_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlt_header"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/NormalTextStyleBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tiny"
+                app:load_class_teacher_name="@{class_detail}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/NormalTextStyleBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tiny"
+                app:load_subject_name="@{class_detail}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/NormalTextStyleBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tiny"
+                app:load_class_id="@{class_detail}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/separator_color" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/NormalTextStyleBlack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/margin_tiny"
+                    android:text="@string/student_list" />
+
+            </RelativeLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_student"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlt_class_info"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_tiny" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_start_end_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_normal"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:src="@drawable/ic_start_class"
+            app:backgroundTint="@color/main_color"
+            app:fabSize="mini"
+            app:tint="@android:color/white" />
+
+    </RelativeLayout>
+</layout>

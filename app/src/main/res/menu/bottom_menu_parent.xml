@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/allAppFragment"
+        android:title="@string/main"
+        android:icon="@drawable/ic_main"/>
+
+    <item android:id="@+id/parentManagementFragment"
+        android:title="@string/account"
+        android:icon="@drawable/ic_bottom_account"/>
+
+    <item android:id="@+id/historyFragment"
+        android:title="@string/app_usage"
+        android:icon="@drawable/ic_main"/>
+
+    <item android:id="@+id/settingFragment"
+        android:title="@string/setting"
+        android:icon="@drawable/ic_setting"/>
+
+</menu>

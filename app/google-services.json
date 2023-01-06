@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "179405864458",
+    "project_id": "phonemanager-ad970",
+    "storage_bucket": "phonemanager-ad970.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179405864458:android:32e1d33b82ebaf981e69f3",
+        "android_client_info": {
+          "package_name": "com.b18dccn562.phonemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179405864458-id2n9u0m5cu7cig2eckd290sdkotmf6j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsmeP0CVP9l-g-0cTguhEwruH2QupgjOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179405864458-id2n9u0m5cu7cig2eckd290sdkotmf6j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

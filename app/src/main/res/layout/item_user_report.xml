@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="usage"
+            type="com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.UserReport" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal"
+        android:layout_margin="@dimen/padding_tiny"
+        android:background="@drawable/notification_background">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_app_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:load_app_image_from_internet="@{usage.appIcon}"
+            app:shapeAppearanceOverlay="@style/corner_radius" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_app_name"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/margin_tiny"
+            android:layout_toEndOf="@id/iv_app_icon"
+            android:text="@{usage.appName}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time_used"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_app_name"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/margin_tiny"
+            android:layout_toEndOf="@id/iv_app_icon"
+            android:text="@{usage.appTime}" />
+
+    </RelativeLayout>
+</layout>

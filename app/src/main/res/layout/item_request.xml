@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="request"
+            type="com.b18dccn562.phonemanager.network.dto.RequestDTO" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_tiny"
+        android:background="@drawable/notification_background"
+        android:padding="@dimen/padding_normal">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            app:load_avatar="@{request.requester.email}"
+            app:shapeAppearanceOverlay="@style/corner_radius" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_requester_name"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/margin_tiny"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginEnd="@dimen/margin_tiny"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:layout_toEndOf="@id/iv_avatar"
+            android:text="@{request.requester.username}" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_requester_name"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/iv_avatar"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_agree"
+                style="@style/NormalTextStyleBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tiny"
+                android:layout_weight="1"
+                android:background="@drawable/btn_request"
+                android:text="@string/agree" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_deny"
+                style="@style/NormalTextStyleBlack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_tiny"
+                android:layout_weight="1"
+                android:background="@drawable/btn_request"
+                android:text="@string/denied" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
