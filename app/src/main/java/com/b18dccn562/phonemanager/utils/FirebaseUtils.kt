@@ -28,15 +28,46 @@ fun createClass(classId: Long) {
     database.getReference(ref).child(classId.toString()).child("is_started").setValue(false)
 }
 
-fun startClass(classId: Long){
+fun startClass(classId: Long) {
     val database = getRealtimeDatabase()
     val ref = "Class"
     database.getReference(ref).child(classId.toString()).child("is_started").setValue(true)
 }
 
-fun endClass(classId: Long){
+fun endClass(classId: Long) {
     val database = getRealtimeDatabase()
     val ref = "Class"
     database.getReference(ref).child(classId.toString()).child("is_started").setValue(false)
+}
+//
+//fun addStudentToClass(classId: Long, studentId: Long) {
+//    val database = getRealtimeDatabase()
+//    val ref = "Class"
+//    database.getReference(ref).child(classId.toString()).child(studentId.toString())
+//        .child("joined_class").setValue(true)
+//    database.getReference(ref).child(classId.toString()).child(studentId.toString())
+//        .child("is_active").setValue(false)
+//}
+
+fun uploadLiveUsing(classId: Long, studentId: String, studentName: String, packageName: String, appName: String) {
+    val database = getRealtimeDatabase()
+    val ref = "Class"
+    val student = studentId.replace(".", "_")
+    val packageApp = packageName.replace(".", "_")
+    database.getReference(ref).child(classId.toString())
+        .child("Student")
+        .child(student)
+        .child("using")
+        .setValue(packageApp)
+    database.getReference(ref).child(classId.toString())
+        .child("Student")
+        .child(student)
+        .child("name")
+        .setValue(studentName)
+    database.getReference(ref).child(classId.toString())
+        .child("Student")
+        .child(student)
+        .child("app_name")
+        .setValue(appName)
 }
 

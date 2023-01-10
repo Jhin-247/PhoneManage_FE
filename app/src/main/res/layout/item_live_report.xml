@@ -6,15 +6,15 @@
 
         <variable
             name="usage"
-            type="com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.UserReport" />
+            type="com.b18dccn562.phonemanager.presentation.screen.main.fragments.class_report.LiveStudentReport" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_normal"
         android:layout_margin="@dimen/padding_tiny"
-        android:background="@drawable/notification_background">
+        android:background="@drawable/notification_background"
+        android:padding="@dimen/padding_normal">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_app_icon"
@@ -22,11 +22,11 @@
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            app:load_app_image_from_internet="@{usage.appIcon}"
+            app:load_app_image_from_internet="@{usage.using}"
             app:shapeAppearanceOverlay="@style/app_radius" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_app_name"
+            android:id="@+id/tv_student_name"
             style="@style/NormalTextStyleBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -34,18 +34,18 @@
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/margin_tiny"
             android:layout_toEndOf="@id/iv_app_icon"
-            android:text="@{usage.appName}" />
+            android:text="@{usage.name}" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_time_used"
+            android:id="@+id/tv_app_name"
             style="@style/NormalTextStyleBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_app_name"
+            android:layout_below="@id/tv_student_name"
             android:layout_alignParentEnd="true"
             android:layout_margin="@dimen/margin_tiny"
             android:layout_toEndOf="@id/iv_app_icon"
-            android:text="@{usage.appTime}" />
+            android:text="@{usage.app_name}" />
 
     </RelativeLayout>
 </layout>

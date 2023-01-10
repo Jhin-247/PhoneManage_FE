@@ -1,6 +1,7 @@
 package com.b18dccn562.phonemanager.presentation.screen.main.fragments.class_detail.teacher
 
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.b18dccn562.phonemanager.R
@@ -13,7 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TeacherClassDetailFragment : BaseFragment<FragmentTeacherClassDetailBinding>() {
+class TeacherClassDetailFragment : BaseFragment<FragmentTeacherClassDetailBinding>(),
+    StudentListAdapter.StudentClassListener {
 
     private val mClassManagementViewModel by activityViewModels<ClassManagementViewModel>()
 
@@ -26,6 +28,7 @@ class TeacherClassDetailFragment : BaseFragment<FragmentTeacherClassDetailBindin
 
     override fun initData() {
         retrieveData()
+        studentListAdapter.studentClassListener = this
     }
 
     private fun retrieveData() {
@@ -64,9 +67,33 @@ class TeacherClassDetailFragment : BaseFragment<FragmentTeacherClassDetailBindin
                 )
             navigateToDirection(direction)
         }
+        mBinding.btnViewRequest.setOnClickListener {
+            val direction =
+                TeacherClassDetailFragmentDirections.actionTeacherClassDetailFragment2ToClassRequestFragment(
+                    classDTO
+                )
+            navigateToDirection(direction)
+        }
     }
 
     override fun initObserver() {
+        mClassManagementViewModel.classState.observe(viewLifecycleOwner) {
+            if (it == true) {
+                mBinding.btnStartEndClass.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_end_class
+                    )
+                )
+            } else {
+                mBinding.btnStartEndClass.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_start_class
+                    )
+                )
+            }
+        }
         mClassManagementViewModel.studentInClass.observe(viewLifecycleOwner) {
             when (it) {
                 is Resource.Empty -> {
@@ -96,5 +123,13 @@ class TeacherClassDetailFragment : BaseFragment<FragmentTeacherClassDetailBindin
         super.onDestroy()
         mMainViewModel.showHeaderAndFooter()
         mClassManagementViewModel.removeOldListener(classDTO.id)
+    }
+
+    override fun onRemoveClick(studentId: Long) {
+        mClassManagementViewModel.removeFromClass(studentId, classDTO.id)
+    }
+
+    override fun onBanClick(studentId: Long) {
+        mClassManagementViewModel.banFromClass(studentId, classDTO.id)
     }
 }

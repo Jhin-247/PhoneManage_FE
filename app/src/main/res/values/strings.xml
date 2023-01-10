@@ -137,6 +137,12 @@
     <string name="denied">Deny</string>
     <string name="report">Report</string>
     <string name="viewing_report">Viewing Report</string>
+    <string name="join_class_request">Join class requests</string>
+    <string name="accept">Accept</string>
+    <string name="deny">Deny</string>
+    <string name="remove_from_class">Remove from class</string>
+    <string name="ban_from_class">Ban from class</string>
+    <string name="view_live">View live</string>
 
     <string-array name="query_usage">
         <item>1 day</item>

@@ -16,7 +16,12 @@ class AppRepository(private val appDao: AppDao) {
     }
 
     suspend fun addSetting(setting: Setting) {
-        appDao.insertSetting(setting)
+        val appSetting = appDao.getAppSetting1(setting.appPackageName)
+        if (appSetting.isEmpty()) {
+            appDao.insertSetting(setting)
+        }
+
+//        appDao.insertSetting(setting)
     }
 
     suspend fun getAllApps(): List<ItemApp> {
@@ -30,13 +35,17 @@ class AppRepository(private val appDao: AppDao) {
     suspend fun lockOrUnLockApp(item: ItemApp) {
         val appSetting = getAppSetting(item.packageName)[0].setting
         appSetting.isLock = !appSetting.isLock
-        addSetting(appSetting)
+        updateSetting(appSetting)
+    }
+
+    private suspend fun updateSetting(item: Setting){
+        appDao.updateSetting(item)
     }
 
     suspend fun changeAppLimit(item: ItemApp, timeLimit: Long) {
         val appSetting = getAppSetting(item.packageName)[0].setting
         appSetting.isLimited = timeLimit
-        addSetting(appSetting)
+        updateSetting(appSetting)
     }
 
     suspend fun getAllAppLimit(): List<ItemApp> {
@@ -79,5 +88,9 @@ class AppRepository(private val appDao: AppDao) {
 
     suspend fun getApp(packageName: String): ItemApp {
         return appDao.getAppFromPackageName(packageName)
+    }
+
+    suspend fun getAllAppSetting(): List<Setting> {
+        return appDao.getAllAppSettings()
     }
 }

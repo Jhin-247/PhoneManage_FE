@@ -11,6 +11,10 @@
         <item name="cornerSize">30%</item>
     </style>
 
+    <style name="app_radius">
+        <item name="cornerSize">25%</item>
+    </style>
+
     <style name="round_radius">
         <item name="cornerSize">50%</item>
     </style>

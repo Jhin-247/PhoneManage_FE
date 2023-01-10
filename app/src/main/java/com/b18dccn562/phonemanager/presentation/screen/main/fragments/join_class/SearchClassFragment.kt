@@ -92,6 +92,6 @@ class SearchClassFragment : BaseFragment<FragmentSearchClassBinding>(),
     }
 
     override fun onClassClick(itemClass: ClassDTO) {
-        mClassManagementViewModel.joinClass(itemClass, mMainViewModel.getUserEmail()!!)
+        mClassManagementViewModel.requestJoinClass(itemClass, mMainViewModel.getUserEmail()!!)
     }
 }

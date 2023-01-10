@@ -18,27 +18,21 @@
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/parentManagementFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_parentManagementFragment_to_searchPartnerFragment"
             app:destination="@id/searchPartnerFragment"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/parentManagementFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_parentManagementFragment_to_userReportFragment"
             app:destination="@id/userReportFragment"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/parentManagementFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
@@ -50,27 +44,21 @@
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/settingFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_settingFragment_to_createSubAccountFragment"
             app:destination="@id/createSubAccountFragment"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/settingFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_settingFragment_to_changeLockFragment"
             app:destination="@id/changeLockFragment"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/settingFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/allAppFragment"
@@ -106,18 +94,14 @@
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/teacherClassManagement"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_teacherClassManagement_to_teacherClassDetailFragment2"
             app:destination="@id/teacherClassDetailFragment2"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/teacherClassManagement"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/createClassFragment"
@@ -133,18 +117,14 @@
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/studentClassManagementFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
         <action
             android:id="@+id/action_studentClassManagementFragment_to_studentClassDetailFragment"
             app:destination="@id/studentClassDetailFragment"
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
-            app:popExitAnim="@anim/slide_out_left_to_right"
-            app:popUpTo="@id/studentClassManagementFragment"
-            app:popUpToInclusive="true" />
+            app:popExitAnim="@anim/slide_out_left_to_right" />
     </fragment>
     <fragment
         android:id="@+id/searchClassFragment"
@@ -163,6 +143,13 @@
             app:enterAnim="@anim/slide_in_right_to_left"
             app:exitAnim="@anim/slide_out_right_to_left"
             app:popEnterAnim="@anim/slide_in_left_to_right"
+            app:popExitAnim="@anim/slide_out_left_to_right" />
+        <action
+            android:id="@+id/action_teacherClassDetailFragment2_to_classRequestFragment"
+            app:destination="@id/classRequestFragment"
+            app:enterAnim="@anim/slide_in_right_to_left"
+            app:exitAnim="@anim/slide_out_right_to_left"
+            app:popEnterAnim="@anim/slide_in_left_to_right"
             app:popExitAnim="@anim/slide_out_left_to_right"/>
     </fragment>
     <fragment
@@ -176,7 +163,7 @@
     <fragment
         android:id="@+id/userReportFragment"
         android:name="com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.UserReportFragment"
-        android:label="UserReportFragment" >
+        android:label="UserReportFragment">
         <argument
             android:name="user_info"
             app:argType="com.b18dccn562.phonemanager.network.dto.UserDTO" />
@@ -184,9 +171,17 @@
     <fragment
         android:id="@+id/classReportFragment"
         android:name="com.b18dccn562.phonemanager.presentation.screen.main.fragments.class_report.ClassReportFragment"
-        android:label="ClassReportFragment" >
+        android:label="ClassReportFragment">
         <argument
             android:name="class_info"
+            app:argType="com.b18dccn562.phonemanager.network.dto.ClassDTO" />
+    </fragment>
+    <fragment
+        android:id="@+id/classRequestFragment"
+        android:name="com.b18dccn562.phonemanager.presentation.screen.main.fragments.class_request.ClassRequestFragment"
+        android:label="ClassRequestFragment" >
+        <argument
+            android:name="class_request"
             app:argType="com.b18dccn562.phonemanager.network.dto.ClassDTO" />
     </fragment>
 

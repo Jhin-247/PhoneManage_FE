@@ -16,6 +16,9 @@ interface AppDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSetting(setting: Setting)
 
+    @Query("Select * from app_setting where appPackageName =:packageName")
+    suspend fun getAppSetting1(packageName: String): List<Setting>
+
     @Transaction
     @Query("SELECT * FROM app where packageName =:packageName")
     suspend fun getAppSetting(packageName: String): List<AppSetting>
@@ -40,4 +43,10 @@ interface AppDao {
 
     @Query("SELECT * FROM app_daily_usage")
     suspend fun getAllAppUsage(): List<DailyUsage>
+
+    @Query("SELECT * FROM app_setting")
+    suspend fun getAllAppSettings(): List<Setting>
+
+    @Update
+    suspend fun updateSetting(item: Setting)
 }

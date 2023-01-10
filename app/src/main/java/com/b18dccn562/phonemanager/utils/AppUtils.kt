@@ -238,7 +238,8 @@ class AppUtils @Inject constructor(
 fun getPercentageUsage(itemApp: ItemApp, queryType: AppQueryEnum): Float {
     val total = when(queryType){
         AppQueryEnum.ONE_DAY -> {
-            getTodayTime()
+//            getTodayTime()
+            getOneDayTime()
         }
         AppQueryEnum.SEVEN_DAY -> {
             getOneDayTime() * 7

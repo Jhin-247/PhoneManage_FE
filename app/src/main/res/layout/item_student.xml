@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/iv_view_partner"
+                android:layout_toStartOf="@id/btn_more"
                 android:layout_toEndOf="@id/cv_avatar"
                 android:orientation="vertical">
 
@@ -66,15 +66,13 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_view_partner"
+                android:id="@+id/btn_more"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/margin_small"
-                android:clickable="false"
-                android:visibility="invisible"
-                app:srcCompat="@drawable/ic_next" />
+                app:srcCompat="@drawable/ic_more" />
 
         </RelativeLayout>
 

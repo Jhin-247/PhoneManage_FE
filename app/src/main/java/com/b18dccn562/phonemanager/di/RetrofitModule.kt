@@ -67,6 +67,12 @@ object RetrofitModule {
         return retrofit.create(AppUsageService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideAppSettingService(retrofit: Retrofit): AppSettingService {
+        return retrofit.create(AppSettingService::class.java)
+    }
+
 //    @Provides
 //    @Singleton
 //    fun provideSignUpService(retrofit: Retrofit): SignUpService {

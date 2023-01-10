@@ -60,6 +60,7 @@ class AppListFragment : BaseFragment<FragmentAppListBinding>(),
                 showLoadingDialog()
             } else {
                 hideLoadingDialog()
+                mAppViewModel.uploadAppSetting(mMainViewModel.getUserDTO()!!)
             }
         }
     }

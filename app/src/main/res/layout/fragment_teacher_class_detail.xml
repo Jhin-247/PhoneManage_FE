@@ -50,12 +50,24 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
                 android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"
+                android:layout_marginEnd="@dimen/margin_tiny"
+                android:layout_marginBottom="@dimen/margin_normal"
+                android:layout_toStartOf="@id/btn_view_request"
+                app:srcCompat="@drawable/ic_view_report" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_view_request"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/margin_tiny"
                 android:layout_marginTop="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_normal"
-                app:srcCompat="@drawable/ic_view_report" />
+                app:srcCompat="@drawable/ic_request" />
 
         </RelativeLayout>
 

@@ -8,6 +8,10 @@
         <variable
             name="class_report"
             type="com.b18dccn562.phonemanager.network.dto.ClassDTO" />
+
+        <variable
+            name="class_rp_vm"
+            type="com.b18dccn562.phonemanager.presentation.screen.main.fragments.class_report.ClassReportViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,12 +101,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rlt_header" />
 
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_view_mode"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_tiny"
+            android:checked="@={class_rp_vm.isLive()}"
+            android:text="@string/view_live"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_reports"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="@dimen/margin_normal"
-            app:layout_constraintTop_toBottomOf="@id/tv_" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_view_mode" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

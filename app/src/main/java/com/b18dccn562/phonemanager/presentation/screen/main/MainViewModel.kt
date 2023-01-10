@@ -11,6 +11,7 @@ import com.b18dccn562.phonemanager.common.Resource
 import com.b18dccn562.phonemanager.local_database.shared_preference.AccountPreference
 import com.b18dccn562.phonemanager.network.dto.UserDTO
 import com.b18dccn562.phonemanager.network.repository.AccountRepository
+import com.b18dccn562.phonemanager.service.AppService
 import com.b18dccn562.phonemanager.service.FirebaseService
 import com.b18dccn562.phonemanager.utils.getRealtimeDatabase
 import com.b18dccn562.phonemanager.utils.signUpNewAccountVariables
@@ -96,6 +97,7 @@ class MainViewModel @Inject constructor(
                 val loginResponse = accountRepository.doLogin(email, password)
                 _loginState.postValue(Resource.Success(loginResponse))
                 if (loginResponse.code == Constants.ResponseCode.SUCCESS) {
+                    AppService.username = loginResponse.data!!.username
                     accountPreference.saveAccount(email, password)
                     _userInformation.postValue(loginResponse.data)
                     setupFirebaseObserve()
@@ -114,6 +116,7 @@ class MainViewModel @Inject constructor(
                 val signupResponse = accountRepository.doSignup(email, password, username, role)
                 _signupState.postValue(Resource.Success(signupResponse))
                 if (signupResponse.code == Constants.ResponseCode.SUCCESS) {
+                    AppService.username = signupResponse.data!!.username
                     accountPreference.saveAccount(email, password)
                     _userInformation.postValue(signupResponse.data)
                     setupFirebaseObserve()
@@ -145,6 +148,7 @@ class MainViewModel @Inject constructor(
         removeOldListener(getUserEmail()!!)
         accountPreference.logout()
         _logout.value = true
+        AppService.username = ""
     }
 
     private fun setupFirebaseObserve() {

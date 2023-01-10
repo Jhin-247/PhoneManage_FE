@@ -5,4 +5,5 @@ class ClassReport {
     var appName: String = ""
     var time: String = ""
     var appIcon: String = ""
+    var isUsing: Boolean = false
 }

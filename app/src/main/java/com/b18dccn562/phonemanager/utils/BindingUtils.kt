@@ -10,7 +10,6 @@ import com.b18dccn562.phonemanager.common.Constants
 import com.b18dccn562.phonemanager.local_database.room.local_model.ItemApp
 import com.b18dccn562.phonemanager.network.dto.ClassDTO
 import com.b18dccn562.phonemanager.network.dto.NotificationDTO
-import com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.getAppIcon
 
 @BindingAdapter("load_app_image")
 fun setup(imageView: ImageView, appIcon: Drawable) {

@@ -15,6 +15,7 @@ import com.b18dccn562.phonemanager.local_database.shared_preference.AccountPrefe
 import com.b18dccn562.phonemanager.network.repository.AppUsageRepository
 import com.b18dccn562.phonemanager.utils.AppUtils
 import com.b18dccn562.phonemanager.utils.getRealtimeDatabase
+import com.b18dccn562.phonemanager.utils.uploadLiveUsing
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -64,6 +65,7 @@ class AppService : Service(), Observer {
 
     companion object {
         var mAppUnlocked: String? = "com.b18dccn562.phonemanager"
+        var username: String = ""
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -86,7 +88,7 @@ class AppService : Service(), Observer {
                 mOldRunningApp = mRunningApp
                 mRunningApp = appUtils.getRunningApp()?.packageName
                 if (mOldRunningApp != mRunningApp && mOldRunningApp != null && mRunningApp != null) {
-                    if (trackForViolation){
+                    if (trackForViolation) {
                         checkAndUploadViolation(mRunningApp!!, mOldRunningApp!!)
                     } else {
                         checkAndUploadAppUsage(mRunningApp!!, mOldRunningApp!!)
@@ -106,13 +108,29 @@ class AppService : Service(), Observer {
     }
 
     private suspend fun checkAndUploadViolation(runningApp: String, oldApp: String) {
+        val firebaseAppName = appUtils.getAppName(runningApp)
         if (runningApp == mLauncherName) {
             uploadAppUsageViolation(oldApp, Constants.AppActions.CLOSE_APP)
+            uploadLiveUsing(classId, accountPreference.getEmail(), username, "", firebaseAppName)
         } else if (oldApp != mLauncherName) {
             uploadAppUsageViolation(oldApp, Constants.AppActions.CLOSE_APP)
             uploadAppUsageViolation(runningApp, Constants.AppActions.OPEN_APP)
+            uploadLiveUsing(
+                classId,
+                accountPreference.getEmail(),
+                username,
+                mRunningApp!!,
+                firebaseAppName
+            )
         } else {
             uploadAppUsageViolation(runningApp, Constants.AppActions.OPEN_APP)
+            uploadLiveUsing(
+                classId,
+                accountPreference.getEmail(),
+                username,
+                mRunningApp!!,
+                firebaseAppName
+            )
         }
     }
 
@@ -286,7 +304,6 @@ class AppService : Service(), Observer {
                     Constants.classId = -1
                     removeClassListener()
                 }
-                Log.d("OkHttp----", "${snapshot.value}")
             }
 
             override fun onCancelled(error: DatabaseError) {

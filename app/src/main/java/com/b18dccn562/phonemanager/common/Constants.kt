@@ -11,11 +11,6 @@ object Constants {
 
     const val pattern = "saved_pattern"
 
-    object Service {
-        const val CHANNEL_ID = "com.b18dccn562.finalproject"
-        const val NAME = "AppLock"
-    }
-
     object ApiReferences {
 
         const val REQUEST_REFERENCE = "api/request/"
@@ -29,14 +24,24 @@ object Constants {
         const val GET_STUDENT_CLASSES = "get_student_classes"
         const val GET_STUDENT_IN_CLASS = "get_student_in_class"
         const val SEARCH_CLASS = "search_class"
-        const val JOIN_CLASS = "join_class"
+        const val REQUEST_JOIN_CLASS = "join_class"
+        const val ACCEPT_JOIN_CLASS = "accept_join_class"
+        const val DENY_JOIN_CLASS = "deny_join_class"
+        const val REMOVE_FROM_CLASS = "remove_from_class"
+        const val BAN_FROM_CLASS = "banned_from_class"
+        const val GET_CLASS_REQUEST = "get_class_request"
+        const val GET_USER_APP_SETTING = "get_user_setting"
+        const val UPLOAD_USER_APP_SETTINGS = "upload_user_settings"
+        const val UPLOAD_USER_APP_SETTING = "upload_user_setting"
+        const val UPLOAD_APP_FOR_DATABASE_CHECK = "upload_app_for_database_check"
 
-        const val BASE_URL = "http://192.168.0.5:8081/"
+        const val BASE_URL = "http://192.168.0.3:8081/"
 //        const val BASE_URL = "http://192.168.238.212:8081/"
 
         const val USER_REFERENCE = "api/user/"
         const val CREATE_ACCOUNT = "create_account"
         const val CREATE_SUB_ACCOUNT = "create_sub_account"
+        const val CHANGE_AVATAR = "change_avatar"
         const val LOGIN = "sign_in"
         const val GET_AVATAR = "get_user_image"
         const val UPDATE_USER_INFORMATION = "update_user_information"
@@ -46,15 +51,11 @@ object Constants {
 
         const val APP_REFERENCE = "api/app/"
         const val UPLOAD_APP = "insert_new_app"
-        const val GET_ALL_APP = "get_all_app_status"
-        const val REQUEST_LOCK_LIMIT = "lock_app"
         const val UPLOAD_APP_USAGE = "upload_app_usage"
-        const val UPLOAD_APP_SETTING = "upload_app_setting"
         const val GET_APP_USAGE = "get_user_app_usage"
         const val UPLOAD_APP_USAGE_VIOLATION = "upload_violation"
         const val GET_VIOLATION = "get_violation"
 
-        const val GET_USER = "get_user_info"
         const val SEARCH_CHILDREN = "search_children"
         const val SEARCH_PARTNER = "search_partner"
         const val ADD_PARTNER = "add_partner"
@@ -62,13 +63,9 @@ object Constants {
         const val ACTION_ADD_PARTNER_REQUEST = "action_request"
 
         const val IMAGE_REFERENCE = "api/image"
-        const val CHANGE_AVATAR = "change_avatar"
-        const val CHANGE_USERNAME = "change_username"
-        const val CHANGE_PASSWORD = "change_password"
 
         const val NOTIFICATION_REFERENCE = "api/notification/"
         const val GET_NOTIFICATION = "get_user_notifications"
-        const val CREATE_NOTIFICATION = "create_notification"
 
     }
 
@@ -80,25 +77,15 @@ object Constants {
     }
 
     object Preference {
-        const val AVATAR_URL = "avatar"
-        const val USER_ROLE = "role"
-        const val USERNAME: String = "username"
         const val PREF = "user_pref"
         const val EMAIL = "email"
         const val PASSWORD = "password"
-        const val ACCESS_TOKEN = "access_token"
-        const val SUPER_USER = "super_user"
-        const val UID = "uid"
     }
 
     object Role {
-        const val PERSONAL = 1
         const val PARENT = 3
         const val TEACHER = 2
-        const val BOSS = 4
         const val CHILD = 5
-        const val STUDENT = 6
-        const val EMPLOYEE = 7
     }
 
     object RequestType {

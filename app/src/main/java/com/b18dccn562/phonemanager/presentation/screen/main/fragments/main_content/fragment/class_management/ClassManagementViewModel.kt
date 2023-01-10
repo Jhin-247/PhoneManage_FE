@@ -11,7 +11,6 @@ import com.b18dccn562.phonemanager.common.Resource
 import com.b18dccn562.phonemanager.network.dto.ClassDTO
 import com.b18dccn562.phonemanager.network.dto.UserDTO
 import com.b18dccn562.phonemanager.network.repository.ClassRepository
-import com.b18dccn562.phonemanager.service.Observer
 import com.b18dccn562.phonemanager.service.ObserverForService
 import com.b18dccn562.phonemanager.utils.endClass
 import com.b18dccn562.phonemanager.utils.getRealtimeDatabase
@@ -43,6 +42,7 @@ class ClassManagementViewModel @Inject constructor(
     val searchText = MutableLiveData<String>()
 
     private val _isClassStarting = MutableLiveData<Boolean>()
+    val classState: LiveData<Boolean> = _isClassStarting
 
     private var currentClassId: Long? = null
 
@@ -173,11 +173,11 @@ class ClassManagementViewModel @Inject constructor(
         }
     }
 
-    fun joinClass(itemClass: ClassDTO, userEmail: String) {
+    fun requestJoinClass(itemClass: ClassDTO, userEmail: String) {
         scope.launch {
             _joinClassProcess.postValue(0)
             try {
-                val result = classRepository.joinClass(itemClass, userEmail)
+                val result = classRepository.requestJoinClass(itemClass, userEmail)
                 if (result.code == 200)
                     _joinClassProcess.postValue(1)
                 else
@@ -201,12 +201,10 @@ class ClassManagementViewModel @Inject constructor(
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.value == true) {
                     _isClassStarting.postValue(true)
-                    Log.d("OkHttp----", "Debugging ${_isClassStarting.value}")
                 } else {
                     _isClassStarting.postValue(false)
                     Constants.classId = -1
                 }
-                Log.d("OkHttp----", "${snapshot.value}")
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -231,7 +229,6 @@ class ClassManagementViewModel @Inject constructor(
 
     fun startOrEndClass(classDTO: ClassDTO) {
         val canStartClass = _isClassStarting.value
-        Log.d("OkHttp----", "$canStartClass")
         if (canStartClass == null || canStartClass == false) {
             startClass(classDTO.id)
         } else {
@@ -244,6 +241,31 @@ class ClassManagementViewModel @Inject constructor(
         if (canJoinClass == true) {
             Constants.classId = classDTO.id
             ObserverForService.update()
+        }
+    }
+
+    fun removeFromClass(studentId: Long, classId: Long) {
+        scope.launch {
+            _studentInClass.postValue(Resource.Loading())
+            try {
+                val result = classRepository.removeFromClass(classId, studentId)
+                _studentInClass.postValue(Resource.Success(result))
+            } catch (exception: Exception) {
+                _studentInClass.postValue(Resource.Error("Something went wrong ${exception.message}"))
+            }
+        }
+
+    }
+
+    fun banFromClass(studentId: Long, classId: Long) {
+        scope.launch {
+            _studentInClass.postValue(Resource.Loading())
+            try {
+                val result = classRepository.banFromClass(classId, studentId)
+                _studentInClass.postValue(Resource.Success(result))
+            } catch (exception: Exception) {
+                _studentInClass.postValue(Resource.Error("Something went wrong ${exception.message}"))
+            }
         }
     }
 

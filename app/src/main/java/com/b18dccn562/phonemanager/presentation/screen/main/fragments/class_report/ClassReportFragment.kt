@@ -7,12 +7,9 @@ import com.b18dccn562.phonemanager.R
 import com.b18dccn562.phonemanager.base.BaseFragment
 import com.b18dccn562.phonemanager.common.Resource
 import com.b18dccn562.phonemanager.databinding.FragmentClassReportBinding
-import com.b18dccn562.phonemanager.network.dto.AppUsageDTO
 import com.b18dccn562.phonemanager.network.dto.ClassDTO
 import com.b18dccn562.phonemanager.network.dto.ReportDTO
-import com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.UserReport
 import com.b18dccn562.phonemanager.presentation.screen.main.fragments.user_report.getAppIcon
-import com.google.firebase.database.core.Repo
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,6 +25,9 @@ class ClassReportFragment : BaseFragment<FragmentClassReportBinding>() {
     @Inject
     lateinit var classReportAdapter: ClassReportAdapter
 
+    @Inject
+    lateinit var classLiveReportAdapter: LiveStudentReportAdapter
+
     private lateinit var classInfo: ClassDTO
 
     override fun initData() {
@@ -40,6 +40,7 @@ class ClassReportFragment : BaseFragment<FragmentClassReportBinding>() {
         val args = ClassReportFragmentArgs.fromBundle(bundle)
         classInfo = args.classInfo
         mBinding.classReport = classInfo
+        mReportViewModel.observeLiveData(classInfo.id)
     }
 
     override fun initYourView() {
@@ -47,6 +48,7 @@ class ClassReportFragment : BaseFragment<FragmentClassReportBinding>() {
         mBinding.rcvReports.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         mBinding.rcvReports.adapter = classReportAdapter
+        mBinding.classRpVm = mReportViewModel
         mBinding.lifecycleOwner = viewLifecycleOwner
     }
 
@@ -81,6 +83,17 @@ class ClassReportFragment : BaseFragment<FragmentClassReportBinding>() {
                 }
             }
         }
+        mReportViewModel.liveStudentReportList.observe(viewLifecycleOwner) {
+            classLiveReportAdapter.submitList(it)
+        }
+
+        mReportViewModel.isLive.observe(viewLifecycleOwner) {
+            if (it == true) {
+                mBinding.rcvReports.adapter = classLiveReportAdapter
+            } else {
+                mBinding.rcvReports.adapter = classReportAdapter
+            }
+        }
     }
 
     private fun processDataAndShow(data: List<ReportDTO>) {
@@ -108,5 +121,10 @@ class ClassReportFragment : BaseFragment<FragmentClassReportBinding>() {
             listToShow.add(userReport)
         }
         classReportAdapter.submitList(listToShow)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mReportViewModel.removeOldListener(classInfo.id)
     }
 }
